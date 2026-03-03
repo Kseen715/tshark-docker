@@ -73,4 +73,4 @@ COPY --from=builder /etc/group  /etc/group
 
 VOLUME ["/capture"]
 
-ENTRYPOINT ["/usr/bin/tshark", "-w", "/capture/capture.pcap"]
+ENTRYPOINT ["/usr/bin/tshark", "-i", "any", "-p" "-w", "/capture/capture.pcap"]
