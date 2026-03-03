@@ -1,0 +1,16 @@
+x-build: &build
+  image: tshark
+  build:
+    context: .
+    dockerfile: Dockerfile
+
+services:
+  tshark:
+    <<: [*build]
+    network_mode: host
+    volumes:
+      - ./capture:/capture
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
